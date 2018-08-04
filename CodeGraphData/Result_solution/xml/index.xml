@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.6">
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_bass_information" kind="class"><name>GreyBass::MachineLearning::BassInformation</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_bass_information_1ab730f47d46b98fd61feb3be4d5c15ec1" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_deep___learning___model" kind="class"><name>GreyBass::MachineLearning::Deep_Learning_Model</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_deep___learning___model_1a94229740c2847e7a6fd81368319468ad" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_dimension___selection" kind="class"><name>GreyBass::MachineLearning::Dimension_Selection</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_dimension___selection_1aed6d374c250f665db502c069a6ea15da" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___model" kind="class"><name>GreyBass::MachineLearning::Ensemble_Model</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___model_1ad515366769ab3905bb3929fc9b8fbfe2" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection" kind="class"><name>GreyBass::MachineLearning::Ensemble_Selection</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection_1aaf1112e9c8b8072f409df9e5cd84d13a" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_forest___model" kind="class"><name>GreyBass::MachineLearning::Forest_Model</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_forest___model_1a78302ff2718cdbc970a9bdd9ec486dbc" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_gaussian___model" kind="class"><name>GreyBass::MachineLearning::Gaussian_Model</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_gaussian___model_1a7501d9b345e6aee37bfe50290e605d0f" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_genetic___selection" kind="class"><name>GreyBass::MachineLearning::Genetic_Selection</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_genetic___selection_1a6ff8635792316e597a91abf9a92fac2f" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass" kind="class"><name>GreyBass::Grey_Bass::Grey_Bass</name>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a96a91719a3f6c928c1b1d8ae59900596" kind="variable"><name>_externalFactor</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1ac1cb713dca7644a13600f65e90d8609e" kind="variable"><name>_internalFactor</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a1ac81dc61906b868f57a8af5ee19882f" kind="variable"><name>_marketSize</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1ad7a3df735bea008ec932011b63410631" kind="variable"><name>_baseSeq</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a9cc56a0a40b22663674382777ae51d11" kind="function"><name>__init__</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a2b8b64bd83279d19b67fba4b3736b789" kind="function"><name>predict</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1ae24eef584a816fd06fa65a51df60ee7a" kind="function"><name>rmse</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a0566ba143d5313f5c8942f291c0bca3b" kind="function"><name>_meanSeq</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a25ec2a744c8256e6b268dc19e813500e" kind="function"><name>_agoSeq</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a36d76d1f09ca58092fcd9efe01671a13" kind="function"><name>_NLS</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1a46ba81d1b270f6f7a16031c8e4ee3c85" kind="function"><name>__objFunction</name></member>
+    <member refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass_1ad2256f0ccd01625fb7f391820b87d6c7" kind="function"><name>_whitenisation</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection" kind="class"><name>GreyBass::MachineLearning::IFeatureSelection</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection_1a02b190f0600ef821b0fb7ae2688c96db" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning" kind="class"><name>GreyBass::MachineLearning::IMachineLearning</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning_1af59d3df9e7cb79e97b92dced8b4326c3" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_1_1_machine_learning_1_1_s_v_m___model" kind="class"><name>GreyBass::MachineLearning::SVM_Model</name>
+    <member refid="class_grey_bass_1_1_machine_learning_1_1_s_v_m___model_1a2eba8c8e969dc95431216ac98295e3ed" kind="function"><name>__init__</name></member>
+  </compound>
+  <compound refid="class_grey_bass_test_1_1_test___grey_bass_test" kind="class"><name>GreyBassTest::Test_GreyBassTest</name>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a8b2e752d33b9ff3950d29d28ab8c2db8" kind="function"><name>test_meanSeq</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a29c2332f77b397bbb5b2eba3d3f54e3a" kind="function"><name>test_agoSeq</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1abc43f6ca953995625c80d180de364ecc" kind="function"><name>test_NLS</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a633a9c49974256797be95ed855e0ee24" kind="function"><name>test_predict</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a1e7f62ff6c0b1118a04c9b6d47f2eb60" kind="function"><name>test_whitenisation</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a2f9f0ca9916371a6972b2c8aff2c25ce" kind="function"><name>test_rmse</name></member>
+  </compound>
+  <compound refid="class_machine_learningtest_1_1_test___machine_learningtest" kind="class"><name>MachineLearningtest::Test_MachineLearningtest</name>
+    <member refid="class_machine_learningtest_1_1_test___machine_learningtest_1a2bcf5054865cf98b39c002958bd9febc" kind="function"><name>test_A</name></member>
+  </compound>
+  <compound refid="namespace_grey_bass" kind="namespace"><name>GreyBass</name>
+  </compound>
+  <compound refid="namespace_grey_bass_1_1_grey___bass" kind="namespace"><name>GreyBass::Grey_Bass</name>
+  </compound>
+  <compound refid="namespace_grey_bass_1_1_machine_learning" kind="namespace"><name>GreyBass::MachineLearning</name>
+  </compound>
+  <compound refid="namespace_grey_bass_test" kind="namespace"><name>GreyBassTest</name>
+  </compound>
+  <compound refid="namespace_machine_learningtest" kind="namespace"><name>MachineLearningtest</name>
+  </compound>
+  <compound refid="namespace_new___product___forecast" kind="namespace"><name>New_Product_Forecast</name>
+    <member refid="namespace_new___product___forecast_1a1b32ab5e1ea9022874322df6faae4b6e" kind="variable"><name>con</name></member>
+    <member refid="namespace_new___product___forecast_1a8252b94f0788c780c7e776737f4b3a7c" kind="variable"><name>recipe_ing</name></member>
+    <member refid="namespace_new___product___forecast_1abccb99b8b8dd154361b3be2cbaad42a7" kind="variable"><name>salesNum</name></member>
+    <member refid="namespace_new___product___forecast_1a7c4c5476f98d05e6e62658154d6401a8" kind="variable"><name>recing</name></member>
+    <member refid="namespace_new___product___forecast_1af8857fda77c9c2be75ad4706c01ed5c9" kind="variable"><name>data</name></member>
+    <member refid="namespace_new___product___forecast_1aa3beeda52df52ac80e29c104c7eb9274" kind="variable"><name>salesData</name></member>
+    <member refid="namespace_new___product___forecast_1aa6f34ca1af03ee619fe6b64ef8b2782a" kind="variable"><name>pd1</name></member>
+    <member refid="namespace_new___product___forecast_1a34d19122dcff9b0a2aff0221c8a61891" kind="variable"><name>gb</name></member>
+    <member refid="namespace_new___product___forecast_1a5fd558895638a3028a2e75b54179741b" kind="variable"><name>input</name></member>
+  </compound>
+  <compound refid="namespace_unit_test" kind="namespace"><name>UnitTest</name>
+    <member refid="namespace_unit_test_1ac081f0c8f97102cc6d57c731022b9d92" kind="variable"><name>gb</name></member>
+    <member refid="namespace_unit_test_1a7b14a3a7ff4c4e6e9b72a15208852f25" kind="variable"><name>testData</name></member>
+  </compound>
+  <compound refid="____init_____8py" kind="file"><name>__init__.py</name>
+  </compound>
+  <compound refid="_grey___bass_8py" kind="file"><name>Grey_Bass.py</name>
+  </compound>
+  <compound refid="_machine_learning_8py" kind="file"><name>MachineLearning.py</name>
+  </compound>
+  <compound refid="_new___product___forecast_8py" kind="file"><name>New_Product_Forecast.py</name>
+  </compound>
+  <compound refid="_grey_bass_test_8py" kind="file"><name>GreyBassTest.py</name>
+  </compound>
+  <compound refid="_machine_learningtest_8py" kind="file"><name>MachineLearningtest.py</name>
+  </compound>
+  <compound refid="_unit_test_8py" kind="file"><name>UnitTest.py</name>
+  </compound>
+  <compound refid="dir_cc96250ea182d20df617f19f3ebf1703" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation</name>
+  </compound>
+  <compound refid="dir_e7ab463f0ce8c775ffd5e966152cadeb" kind="dir"><name>C:/Users/USER/Documents</name>
+  </compound>
+  <compound refid="dir_7c98ccfdbb4b99bcef6b4d574e8333db" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass</name>
+  </compound>
+  <compound refid="dir_4ace0d7cd802d2b38ea9f51cc6fd1b62" kind="dir"><name>C:/Users/USER/Documents/Imperial College London</name>
+  </compound>
+  <compound refid="dir_2ae300a6edbe357dc67f55d14542617a" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast</name>
+  </compound>
+  <compound refid="dir_c6e1218019953e49dd5776192900e0ff" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast</name>
+  </compound>
+  <compound refid="dir_9c07c8c888f0f381a5114d12194f44a3" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module</name>
+  </compound>
+  <compound refid="dir_fa411a38ba6d2dedcd8047b85a53238e" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest</name>
+  </compound>
+  <compound refid="dir_b363a9e241812c8b4737ecb666716158" kind="dir"><name>C:/Users/USER</name>
+  </compound>
+  <compound refid="dir_8ceffd4ee35c3518d4e8bdc7e638efe8" kind="dir"><name>C:/Users</name>
+  </compound>
+</doxygenindex>

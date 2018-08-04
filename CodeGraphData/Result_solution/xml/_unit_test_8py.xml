@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="_unit_test_8py" kind="file">
+    <compoundname>UnitTest.py</compoundname>
+    <innernamespace refid="namespace_unit_test">UnitTest</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespace_unit_test" refkind="compound"><highlight class="keyword">import</highlight><highlight class="normal"><sp/>numpy<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>np</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>scipy<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>sci</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>pandas<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>pd</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>scipy.optimize<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>least_squares</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>GreyBass<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Grey_Bass</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="namespace_unit_test_1ac081f0c8f97102cc6d57c731022b9d92" refkind="member"><highlight class="normal">gb<sp/>=<sp/>Grey_Bass.Grey_Bass()</highlight></codeline>
+<codeline lineno="8" refid="namespace_unit_test_1a7b14a3a7ff4c4e6e9b72a15208852f25" refkind="member"><highlight class="normal">testData<sp/>=<sp/>np.array([1,2,3,4,5])</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">res<sp/>=<sp/>gb._NLS(testData)</highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py"/>
+  </compounddef>
+</doxygen>

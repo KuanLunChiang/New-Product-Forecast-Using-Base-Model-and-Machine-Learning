@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespace_grey_bass_1_1_machine_learning" kind="namespace">
+    <compoundname>GreyBass::MachineLearning</compoundname>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning" prot="public">GreyBass::MachineLearning::IMachineLearning</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_bass_information" prot="public">GreyBass::MachineLearning::BassInformation</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_s_v_m___model" prot="public">GreyBass::MachineLearning::SVM_Model</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_gaussian___model" prot="public">GreyBass::MachineLearning::Gaussian_Model</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___model" prot="public">GreyBass::MachineLearning::Ensemble_Model</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_deep___learning___model" prot="public">GreyBass::MachineLearning::Deep_Learning_Model</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_forest___model" prot="public">GreyBass::MachineLearning::Forest_Model</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection" prot="public">GreyBass::MachineLearning::IFeatureSelection</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_genetic___selection" prot="public">GreyBass::MachineLearning::Genetic_Selection</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_dimension___selection" prot="public">GreyBass::MachineLearning::Dimension_Selection</innerclass>
+    <innerclass refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection" prot="public">GreyBass::MachineLearning::Ensemble_Selection</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

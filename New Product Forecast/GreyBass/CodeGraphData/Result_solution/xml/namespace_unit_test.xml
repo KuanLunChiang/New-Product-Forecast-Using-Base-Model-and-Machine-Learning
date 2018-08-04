@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespace_unit_test" kind="namespace">
+    <compoundname>UnitTest</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_unit_test_1ac081f0c8f97102cc6d57c731022b9d92" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple UnitTest.gb</definition>
+        <argsstring></argsstring>
+        <name>gb</name>
+        <initializer>= Grey_Bass.Grey_Bass()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py" line="7" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_unit_test_1a7b14a3a7ff4c4e6e9b72a15208852f25" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple UnitTest.testData</definition>
+        <argsstring></argsstring>
+        <name>testData</name>
+        <initializer>= np.array([1,2,3,4,5])</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py" line="8" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/UnitTest.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

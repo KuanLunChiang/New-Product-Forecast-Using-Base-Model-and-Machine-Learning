@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespace_new___product___forecast" kind="namespace">
+    <compoundname>New_Product_Forecast</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_new___product___forecast_1a1b32ab5e1ea9022874322df6faae4b6e" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.con</definition>
+        <argsstring></argsstring>
+        <name>con</name>
+        <initializer>= pyodbc.connect(&apos;Driver={SQL Server};&apos;
+                      &apos;Server=DESKTOP-964U6AM\MSSQLSERVER01;&apos;
+                      &apos;Database=A1_supply;&apos;
+                      &apos;Trusted_Connection=yes;&apos;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="7" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1a8252b94f0788c780c7e776737f4b3a7c" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.recipe_ing</definition>
+        <argsstring></argsstring>
+        <name>recipe_ing</name>
+        <initializer>= pd.read_sql(&quot;select * from vw_recipe_ingredient_qty&quot;, con)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="12" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1abccb99b8b8dd154361b3be2cbaad42a7" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.salesNum</definition>
+        <argsstring></argsstring>
+        <name>salesNum</name>
+        <initializer>= pd.read_sql(&quot;select * from vw_salesNum&quot;, con)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="13" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1a7c4c5476f98d05e6e62658154d6401a8" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.recing</definition>
+        <argsstring></argsstring>
+        <name>recing</name>
+        <initializer>= pd.DataFrame(recipe_ing.pivot(index = &apos;RecipeId&apos;, columns = &apos;IngredientName&apos;, values = &apos;Quantity&apos;).fillna(0).to_records())</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="14" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1af8857fda77c9c2be75ad4706c01ed5c9" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <initializer>= salesNum.set_index(&apos;RecipeId&apos;)</initializer>
+        <briefdescription>
+<para>Meta Data ##########################################. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="17" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1aa3beeda52df52ac80e29c104c7eb9274" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>tuple New_Product_Forecast::salesData</definition>
+        <argsstring></argsstring>
+        <name>salesData</name>
+        <initializer>= <ref refid="namespace_new___product___forecast_1af8857fda77c9c2be75ad4706c01ed5c9" kindref="member">data</ref>[[&apos;total_sales&apos;,&apos;date&apos;,&apos;MenuItemID&apos;]]</initializer>
+        <briefdescription>
+<para>Sales Data #########################################. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="21" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1aa6f34ca1af03ee619fe6b64ef8b2782a" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>list New_Product_Forecast::pd1</definition>
+        <argsstring></argsstring>
+        <name>pd1</name>
+        <initializer>= salesData.loc[salesData.MenuItemID == 2]</initializer>
+        <briefdescription>
+<para>Property Data #################################################. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="25" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1a34d19122dcff9b0a2aff0221c8a61891" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.gb</definition>
+        <argsstring></argsstring>
+        <name>gb</name>
+        <initializer>= <ref refid="class_grey_bass_1_1_grey___bass_1_1_grey___bass" kindref="compound">Grey_Bass</ref>()</initializer>
+        <briefdescription>
+<para>Grey Bass ###############################################. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="31" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_new___product___forecast_1a5fd558895638a3028a2e75b54179741b" prot="public" static="no" mutable="no">
+        <type>tuple</type>
+        <definition>tuple New_Product_Forecast.input</definition>
+        <argsstring></argsstring>
+        <name>input</name>
+        <initializer>= pd1.total_sales.tolist()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="33" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/New_Product_Forecast.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

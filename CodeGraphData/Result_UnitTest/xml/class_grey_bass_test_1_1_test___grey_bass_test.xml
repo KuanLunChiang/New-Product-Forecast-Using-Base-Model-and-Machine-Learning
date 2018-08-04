@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_grey_bass_test_1_1_test___grey_bass_test" kind="class" prot="public">
+    <compoundname>GreyBassTest::Test_GreyBassTest</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">TestCase</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1a8b2e752d33b9ff3950d29d28ab8c2db8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_meanSeq</definition>
+        <argsstring></argsstring>
+        <name>test_meanSeq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="7" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="7" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1a29c2332f77b397bbb5b2eba3d3f54e3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_agoSeq</definition>
+        <argsstring></argsstring>
+        <name>test_agoSeq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="16" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="16" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1abc43f6ca953995625c80d180de364ecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_NLS</definition>
+        <argsstring></argsstring>
+        <name>test_NLS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="25" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="25" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1a633a9c49974256797be95ed855e0ee24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_predict</definition>
+        <argsstring></argsstring>
+        <name>test_predict</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="35" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="35" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1a1e7f62ff6c0b1118a04c9b6d47f2eb60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_whitenisation</definition>
+        <argsstring></argsstring>
+        <name>test_whitenisation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="51" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="51" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grey_bass_test_1_1_test___grey_bass_test_1a2f9f0ca9916371a6972b2c8aff2c25ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBassTest.Test_GreyBassTest.test_rmse</definition>
+        <argsstring></argsstring>
+        <name>test_rmse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="67" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="67" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>TestCase</label>
+      </node>
+      <node id="0">
+        <label>GreyBassTest.Test_GreyBassTest</label>
+        <link refid="class_grey_bass_test_1_1_test___grey_bass_test"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>TestCase</label>
+      </node>
+      <node id="2">
+        <label>GreyBassTest.Test_GreyBassTest</label>
+        <link refid="class_grey_bass_test_1_1_test___grey_bass_test"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" line="6" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/GreyBassTest.py" bodystart="6" bodyend="75"/>
+    <listofallmembers>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a29c2332f77b397bbb5b2eba3d3f54e3a" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_agoSeq</name></member>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a8b2e752d33b9ff3950d29d28ab8c2db8" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_meanSeq</name></member>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1abc43f6ca953995625c80d180de364ecc" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_NLS</name></member>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a633a9c49974256797be95ed855e0ee24" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_predict</name></member>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a2f9f0ca9916371a6972b2c8aff2c25ce" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_rmse</name></member>
+      <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a1e7f62ff6c0b1118a04c9b6d47f2eb60" prot="public" virt="non-virtual"><scope>GreyBassTest::Test_GreyBassTest</scope><name>test_whitenisation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

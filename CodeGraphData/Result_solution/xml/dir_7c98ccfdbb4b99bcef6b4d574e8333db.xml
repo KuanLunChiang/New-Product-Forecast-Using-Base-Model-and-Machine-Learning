@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dir_7c98ccfdbb4b99bcef6b4d574e8333db" kind="dir">
+    <compoundname>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass</compoundname>
+    <innerfile refid="____init_____8py">__init__.py</innerfile>
+    <innerfile refid="_grey___bass_8py">Grey_Bass.py</innerfile>
+    <innerfile refid="_machine_learning_8py">MachineLearning.py</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/"/>
+  </compounddef>
+</doxygen>

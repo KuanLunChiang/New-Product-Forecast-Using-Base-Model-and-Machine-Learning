@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.6">
+  <compound refid="class_grey_bass_test_1_1_test___grey_bass_test" kind="class"><name>GreyBassTest::Test_GreyBassTest</name>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a8b2e752d33b9ff3950d29d28ab8c2db8" kind="function"><name>test_meanSeq</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a29c2332f77b397bbb5b2eba3d3f54e3a" kind="function"><name>test_agoSeq</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1abc43f6ca953995625c80d180de364ecc" kind="function"><name>test_NLS</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a633a9c49974256797be95ed855e0ee24" kind="function"><name>test_predict</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a1e7f62ff6c0b1118a04c9b6d47f2eb60" kind="function"><name>test_whitenisation</name></member>
+    <member refid="class_grey_bass_test_1_1_test___grey_bass_test_1a2f9f0ca9916371a6972b2c8aff2c25ce" kind="function"><name>test_rmse</name></member>
+  </compound>
+  <compound refid="class_machine_learningtest_1_1_test___machine_learningtest" kind="class"><name>MachineLearningtest::Test_MachineLearningtest</name>
+    <member refid="class_machine_learningtest_1_1_test___machine_learningtest_1a2bcf5054865cf98b39c002958bd9febc" kind="function"><name>test_A</name></member>
+  </compound>
+  <compound refid="namespace_grey_bass_test" kind="namespace"><name>GreyBassTest</name>
+  </compound>
+  <compound refid="namespace_machine_learningtest" kind="namespace"><name>MachineLearningtest</name>
+  </compound>
+  <compound refid="namespace_unit_test" kind="namespace"><name>UnitTest</name>
+    <member refid="namespace_unit_test_1ac081f0c8f97102cc6d57c731022b9d92" kind="variable"><name>gb</name></member>
+    <member refid="namespace_unit_test_1a7b14a3a7ff4c4e6e9b72a15208852f25" kind="variable"><name>testData</name></member>
+  </compound>
+  <compound refid="_grey_bass_test_8py" kind="file"><name>GreyBassTest.py</name>
+  </compound>
+  <compound refid="_machine_learningtest_8py" kind="file"><name>MachineLearningtest.py</name>
+  </compound>
+  <compound refid="_unit_test_8py" kind="file"><name>UnitTest.py</name>
+  </compound>
+  <compound refid="dir_cc96250ea182d20df617f19f3ebf1703" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation</name>
+  </compound>
+  <compound refid="dir_e7ab463f0ce8c775ffd5e966152cadeb" kind="dir"><name>C:/Users/USER/Documents</name>
+  </compound>
+  <compound refid="dir_4ace0d7cd802d2b38ea9f51cc6fd1b62" kind="dir"><name>C:/Users/USER/Documents/Imperial College London</name>
+  </compound>
+  <compound refid="dir_c6e1218019953e49dd5776192900e0ff" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast</name>
+  </compound>
+  <compound refid="dir_9c07c8c888f0f381a5114d12194f44a3" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module</name>
+  </compound>
+  <compound refid="dir_fa411a38ba6d2dedcd8047b85a53238e" kind="dir"><name>C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest</name>
+  </compound>
+  <compound refid="dir_b363a9e241812c8b4737ecb666716158" kind="dir"><name>C:/Users/USER</name>
+  </compound>
+  <compound refid="dir_8ceffd4ee35c3518d4e8bdc7e638efe8" kind="dir"><name>C:/Users</name>
+  </compound>
+</doxygenindex>

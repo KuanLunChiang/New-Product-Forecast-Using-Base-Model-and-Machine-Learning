@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_machine_learningtest_1_1_test___machine_learningtest" kind="class" prot="public">
+    <compoundname>MachineLearningtest::Test_MachineLearningtest</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">TestCase</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_machine_learningtest_1_1_test___machine_learningtest_1a2bcf5054865cf98b39c002958bd9febc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def MachineLearningtest.Test_MachineLearningtest.test_A</definition>
+        <argsstring></argsstring>
+        <name>test_A</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/MachineLearningtest.py" line="4" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/MachineLearningtest.py" bodystart="4" bodyend="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="92">
+        <label>unittest::TestCase</label>
+      </node>
+      <node id="91">
+        <label>MachineLearningtest.Test_MachineLearningtest</label>
+        <link refid="class_machine_learningtest_1_1_test___machine_learningtest"/>
+        <childnode refid="92" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="94">
+        <label>unittest::TestCase</label>
+      </node>
+      <node id="93">
+        <label>MachineLearningtest.Test_MachineLearningtest</label>
+        <link refid="class_machine_learningtest_1_1_test___machine_learningtest"/>
+        <childnode refid="94" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/MachineLearningtest.py" line="3" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/UnitTest/MachineLearningtest.py" bodystart="3" bodyend="7"/>
+    <listofallmembers>
+      <member refid="class_machine_learningtest_1_1_test___machine_learningtest_1a2bcf5054865cf98b39c002958bd9febc" prot="public" virt="non-virtual"><scope>MachineLearningtest::Test_MachineLearningtest</scope><name>test_A</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

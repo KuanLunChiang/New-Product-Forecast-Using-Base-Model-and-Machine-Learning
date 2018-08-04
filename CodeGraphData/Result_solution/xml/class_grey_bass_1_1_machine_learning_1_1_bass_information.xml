@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_grey_bass_1_1_machine_learning_1_1_bass_information" kind="class" prot="public">
+    <compoundname>GreyBass::MachineLearning::BassInformation</compoundname>
+    <basecompoundref refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning" prot="public" virt="non-virtual">GreyBass.MachineLearning.IMachineLearning</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grey_bass_1_1_machine_learning_1_1_bass_information_1ab730f47d46b98fd61feb3be4d5c15ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBass.MachineLearning.BassInformation.__init__</definition>
+        <argsstring></argsstring>
+        <name>__init__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="17" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="17" bodyend="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="0">
+        <label>GreyBass.MachineLearning.BassInformation</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_bass_information"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>object</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>GreyBass.MachineLearning.BassInformation</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_bass_information"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>object</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="16" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="16" bodyend="20"/>
+    <listofallmembers>
+      <member refid="class_grey_bass_1_1_machine_learning_1_1_bass_information_1ab730f47d46b98fd61feb3be4d5c15ec1" prot="public" virt="non-virtual"><scope>GreyBass::MachineLearning::BassInformation</scope><name>__init__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

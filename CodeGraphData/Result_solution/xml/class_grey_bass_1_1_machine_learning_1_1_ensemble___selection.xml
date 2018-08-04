@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection" kind="class" prot="public">
+    <compoundname>GreyBass::MachineLearning::Ensemble_Selection</compoundname>
+    <basecompoundref refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection" prot="public" virt="non-virtual">GreyBass.MachineLearning.IFeatureSelection</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection_1aaf1112e9c8b8072f409df9e5cd84d13a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBass.MachineLearning.Ensemble_Selection.__init__</definition>
+        <argsstring></argsstring>
+        <name>__init__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="58" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="58" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="28">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>object</label>
+      </node>
+      <node id="27">
+        <label>GreyBass.MachineLearning.IFeatureSelection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>GreyBass.MachineLearning.Ensemble_Selection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="32">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>object</label>
+      </node>
+      <node id="31">
+        <label>GreyBass.MachineLearning.IFeatureSelection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>GreyBass.MachineLearning.Ensemble_Selection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection"/>
+        <childnode refid="31" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="57" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="57" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection_1aaf1112e9c8b8072f409df9e5cd84d13a" prot="public" virt="non-virtual"><scope>GreyBass::MachineLearning::Ensemble_Selection</scope><name>__init__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

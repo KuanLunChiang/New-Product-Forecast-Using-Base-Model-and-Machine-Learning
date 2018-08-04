@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning" kind="class" prot="public">
+    <compoundname>GreyBass::MachineLearning::IMachineLearning</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">object</basecompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_bass_information" prot="public" virt="non-virtual">GreyBass.MachineLearning.BassInformation</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_deep___learning___model" prot="public" virt="non-virtual">GreyBass.MachineLearning.Deep_Learning_Model</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___model" prot="public" virt="non-virtual">GreyBass.MachineLearning.Ensemble_Model</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_forest___model" prot="public" virt="non-virtual">GreyBass.MachineLearning.Forest_Model</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_gaussian___model" prot="public" virt="non-virtual">GreyBass.MachineLearning.Gaussian_Model</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection" prot="public" virt="non-virtual">GreyBass.MachineLearning.IFeatureSelection</derivedcompoundref>
+    <derivedcompoundref refid="class_grey_bass_1_1_machine_learning_1_1_s_v_m___model" prot="public" virt="non-virtual">GreyBass.MachineLearning.SVM_Model</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning_1af59d3df9e7cb79e97b92dced8b4326c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def GreyBass.MachineLearning.IMachineLearning.__init__</definition>
+        <argsstring></argsstring>
+        <name>__init__</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="13" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="13" bodyend="15"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>This intreface is used to create a standard input and output 
+for new product competitability forecast using Bass model and machine learning
+</verbatim> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="72">
+        <label>GreyBass.MachineLearning.Forest_Model</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_forest___model"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>GreyBass.MachineLearning.BassInformation</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_bass_information"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>GreyBass.MachineLearning.Gaussian_Model</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_gaussian___model"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="68" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>GreyBass.MachineLearning.Genetic_Selection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_genetic___selection"/>
+        <childnode refid="74" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>GreyBass.MachineLearning.Dimension_Selection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_dimension___selection"/>
+        <childnode refid="74" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>GreyBass.MachineLearning.Deep_Learning_Model</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_deep___learning___model"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>object</label>
+      </node>
+      <node id="78">
+        <label>GreyBass.MachineLearning.SVM_Model</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_s_v_m___model"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>GreyBass.MachineLearning.IFeatureSelection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_feature_selection"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>GreyBass.MachineLearning.Ensemble_Model</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___model"/>
+        <childnode refid="67" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>GreyBass.MachineLearning.Ensemble_Selection</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_ensemble___selection"/>
+        <childnode refid="74" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="79">
+        <label>GreyBass.MachineLearning.IMachineLearning</label>
+        <link refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning"/>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>object</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" line="7" column="1" bodyfile="C:/Users/USER/Documents/Imperial College London/Summer Module/Dissertation/New Product Forecast/New Product Forecast/GreyBass/MachineLearning.py" bodystart="7" bodyend="16"/>
+    <listofallmembers>
+      <member refid="class_grey_bass_1_1_machine_learning_1_1_i_machine_learning_1af59d3df9e7cb79e97b92dced8b4326c3" prot="public" virt="non-virtual"><scope>GreyBass::MachineLearning::IMachineLearning</scope><name>__init__</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
