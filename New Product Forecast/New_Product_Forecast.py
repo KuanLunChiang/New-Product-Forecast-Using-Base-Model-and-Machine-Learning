@@ -21,13 +21,25 @@ data = data.sort_values(['date'])
 salesData = data[['total_sales','date','MenuItemID']]
 salesData = pd.DataFrame(salesData.groupby(['date','MenuItemID']).sum().to_records())
 
-############### Property Data #################################################
-pd1 = salesData.loc[salesData.MenuItemID == 2]
-pd1.total_sales.cumsum()
 
-################ Grey Bass ###############################################
-gb = Grey_Bass()
-pd1 = salesData.loc[salesData.MenuItemID == 2]
-input = pd1.total_sales.tolist()[0:20]
-gb._NLS(input)
+################ PQM Data ###############################################
+from GreyBass.MachineLearning import BassInformation
 
+ixList = salesData.MenuItemID.unique()
+
+bi = BassInformation()
+inputDict = {}
+idList = {}
+for i in ixList:
+    if len(salesData.loc[salesData.MenuItemID == i].total_sales.tolist())>10:
+        inputDict[i] = salesData.loc[salesData.MenuItemID == i].total_sales.tolist()
+        idList[i] =i
+
+bi.train_NLS(inputDict)
+resFrame = pd.DataFrame({'MenuItemID':idList,'externalFactor':bi._externalFactor,'internalFactor':bi._internalFactor,'marketSize':bi._marketSize})
+
+tempData = data.drop('total_sales',axis = 1).drop('date',axis = 1)
+tempData = tempData.set_index('MenuItemID').drop_duplicates()
+qpmFrame = resFrame.join(tempData,how = 'left').fillna(0)
+qpmFrame.to_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+#######################################################################
