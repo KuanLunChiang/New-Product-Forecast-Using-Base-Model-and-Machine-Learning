@@ -3,8 +3,8 @@ from GreyBass.MachineLearning import *
 import numpy as np
 import pandas as pd
 
-class Test_MachineLearningtest(unittest.TestCase):
 
+class Test_BassInfo(unittest.TestCase):
     def test_BassInformation_train_NLS(self):
         ## check input ##
         bi = BassInformation()
@@ -18,6 +18,10 @@ class Test_MachineLearningtest(unittest.TestCase):
         xData = {'item1':np.arange(1,100,1),'item2':np.arange(2,101,1)}
         bi.train_NLS(xData)
         print(bi._internalFactor, bi._externalFactor,bi._marketSize)
+
+
+
+class Test_SVM(unittest.TestCase):
 
     def test_SVM_train(self):
         ## check input ##
@@ -47,7 +51,13 @@ class Test_MachineLearningtest(unittest.TestCase):
         print(svm.predict(testData))
         self.assertRaises(ValueError,svm.predict,np.random.randn(1,1))
 
-class Test_FeatureSelection(unittest.TestCase):
+    def test_SVM_score(self):
+        self.fail()
+
+
+
+
+class Test_GeneticAlgorithm(unittest.TestCase):
 
     def test_GA_fitness(self):
         ## Initialize ##
@@ -144,7 +154,7 @@ class Test_FeatureSelection(unittest.TestCase):
         xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
         yData = df.externalFactor
         svm = SVM_Model()
-        ga = Genetic_Selection(svm,10,100,0.3)
+        ga = Genetic_Selection(svm,20,100,0.3)
         featureNum = len(xData.columns)
         pop = ga._generatePopulation(featureNum)
         sel = ga.selection(xData,yData,pop,100,'rmse')
@@ -179,6 +189,87 @@ class Test_FeatureSelection(unittest.TestCase):
         ga = Genetic_Selection(svm,15,500,0.5)
         features = ga.FeatureSelection(xData,yData,'rmse',300)
         print(features)
+
+
+class Test_Bhattacharyya_Selection (unittest.TestCase):
+    
+    def test_BC_BhattacharyyaCoef (self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df
+        bs = Bhattacharyya_Selection(None)
+        
+        ## Check input ##
+        self.assertRaises(ValueError,bs.Bhattacharyya_coefficient,"Invalid Input","Not valid")
+        self.assertRaises(ValueError,bs.Bhattacharyya_coefficient,{'a':1},{'b':2})
+        self.assertRaises(ValueError,bs.Bhattacharyya_coefficient,2,2)
+
+        ## Coefficient ##
+        coef = bs.Bhattacharyya_coefficient(xData.internalFactor,xData.externalFactor)
+        print(coef)
+
+
+
+    def test_BC_standardDist (self):       
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        #xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        xData = df
+        bs = Bhattacharyya_Selection(None)
+        
+        ## Check input ##
+        self.assertRaises(ValueError,bs._standardize,"Invalid Input")
+        self.assertRaises(ValueError,bs._standardize,{'a':1})
+        self.assertRaises(ValueError,bs._standardize,2)
+        
+        ## Scale ##
+        res = bs._standardize(xData.externalFactor)
+        self.assertEqual(len(res),len(xData.externalFactor))
+        self.assertAlmostEqual(max(res),1)
+        for i in res:
+            self.assertGreaterEqual(i,0)
+
+    def test_BC_coefMX (self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df[['internalFactor','externalFactor']]
+        bs = Bhattacharyya_Selection(None)
+        
+        ## Check input ##
+        self.assertRaises(ValueError,bs._coefMatrix,"Invalid Input")
+        self.assertRaises(ValueError,bs._coefMatrix,{'a':1})
+        self.assertRaises(ValueError,bs._coefMatrix,2)
+
+        ## Extract coefficient matrix ##
+        coefMx = bs._coefMatrix(xData)
+        print(coefMx)
+        ans = (len(xData.columns)*len(xData.columns)-len(xData.columns))/2
+        self.assertEqual(len(coefMx),ans)
+
+    def test_BC_FeatureSelection (self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df
+        bs = Bhattacharyya_Selection(3,None)
+        
+        ## Check input ##
+        self.assertRaises(ValueError,bs.FeatureSelection,"Invalid Input")
+        self.assertRaises(ValueError,bs.FeatureSelection,{'a':1})
+        self.assertRaises(ValueError,bs.FeatureSelection,2)
+
+        ## Feature Selection ##
+        res = bs.FeatureSelection(xData)
+        self.assertEqual(len(res),3)
+        print(res)
+
+
+class Test_GaussianProcess(unittest.TestCase):
+    def test_GP_train(self):
+        self.fail()
+    def test_GP_predict(self):
+        self.fail()
+    def test_GP_score(self):
+        self.fail()
 
 if __name__ == '__main__':
     unittest.main()

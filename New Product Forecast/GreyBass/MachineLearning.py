@@ -6,6 +6,9 @@ import numpy as np
 import random
 from sklearn.model_selection import KFold
 from numpy import ndarray
+import math
+import scipy.stats as st
+
 
 #### Interfaces ####
 class IMachineLearning(object):
@@ -17,14 +20,34 @@ class IMachineLearning(object):
         self._xData = []
         self._yData = []
         self._prd =[]
+        self._regression = True
 
     def train(self):
         raise NotImplementedError()
     def predict(self):
         raise NotImplementedError()
-    def score(self):
-        raise NotImplementedError()
-
+    def score(self,prd, real):
+        ## Check input ##
+        if isinstance(prd,Series):
+            prd = prd.tolist()
+        if isinstance(real,Series):
+            real = real.tolist()
+        if isinstance(prd,ndarray):
+            raise ValueError("Invalid prediction data")
+        if isintance(real,ndarray):
+            raise ValueError("Invalid real data")
+        ## Compute Score ##
+        score = 0
+        if regression:
+            for i in range(len(prd)):
+                score += np.square(prd[i]-real[i])
+            score = np.sqrt(score/len(prd))
+        else:
+            for i in range(len(prd)):
+                if prd[i] == real[i]:
+                    score += 1
+            score = score/len(prd)
+        return score
 
 class IBass(object):
     def __init__(self):
@@ -104,11 +127,15 @@ class Bass_prd (BassInformation,IMachineLearning):
     def predict(self):
         return super().predict()
 
-from sklearn.svm import SVR
+from sklearn.svm import SVR, SVC
 class SVM_Model (IMachineLearning):
 
-    def __init__(self,kernel = 'rbf',gamma ='auto', degree =3, C = 1):
-        self._model = SVR(kernel = kernel, degree = degree, gamma = gamma, C = C)
+    def __init__(self,regression = True,kernel = 'rbf',gamma ='auto', degree =3, C = 1):
+        self._regression = regression
+        if regression:
+            self._model = SVR(kernel = kernel, degree = degree, gamma = gamma, C = C)
+        else:
+            self._model = SVC(kernel = kernel, degree = degree, gamma = gamma, C = C)
         self._kernel = kernel
         self._gamma = gamma
         self._degree = degree
@@ -135,12 +162,11 @@ class SVM_Model (IMachineLearning):
         self._prd = self._model.predict(xData)
         return self._prd
 
-    def score(self):
 
-        return super().score()
-
+from sklearn.gaussian_process import GaussianProcessRegressor
 class Gaussian_Model (IMachineLearning):
     def __init__(self, *args, **kwargs):
+
         return super().__init__(*args, **kwargs)
 
 class Deep_Learning_Model (IMachineLearning):
@@ -171,7 +197,7 @@ class Genetic_Selection (IFeatureSelection):
         self._elite = []
         self._selectedNum = selectedNum
         self._mutateRate = mutateRate
-        self._bestSelection = None
+        self._bestSelection = {'fitness':0,'selection':None}
 
 
 
@@ -198,7 +224,7 @@ class Genetic_Selection (IFeatureSelection):
         if method == 'rmse':
             for i in range(len(actData)):
                 score += np.square(prdData[i] - actData[i])
-            score = 1/score/len(actData)
+            score = 1/np.sqrt(score/len(actData))
         elif method == 'classificationError':
             for i in range(len(actData)):
                 if prdData[i] != actData[i]:
@@ -264,7 +290,17 @@ class Genetic_Selection (IFeatureSelection):
                 cvScore += self.fitness(prd,y_test[j].tolist(),fitnessMethod)
             cvScore = cvScore/5
             fitnessList.append(cvScore)
+
+        ## store best selection ##
+        if max(fitnessList) > self._bestSelection['fitness']:
+            self._bestSelection['fitness'] = max(fitnessList)
+            colIx = np.where(population[fitnessList.index(max(fitnessList))]==1)
+            self._bestSelection['selection'] = xData[xData.columns[colIx]].columns
+
+        ## store elite list which goes to next generation directly ##
         self._elite.append(population[fitnessList.index(max(fitnessList))])
+
+        ## return current generation selection and used for crossover ##
         pop = np.arange(0,len(population))
         selectionIX = random.choices(pop,k = selectNum,weights = fitnessList)
         selection = np.array(population)[selectionIX]
@@ -363,37 +399,6 @@ class Genetic_Selection (IFeatureSelection):
             if i < iter:
                 nextGen = self.crossover(parents)
                 population = self.mutation(nextGen)
-
-        ## find the best feature selection ##
-        fitnessList = []
-        kf = KFold(5)
-        x_train = []
-        x_test = []
-        y_train = []
-        y_test = []
-        for train_index, test_index in kf.split(xData):
-            x_train.append(xData.iloc[train_index])
-            x_test.append(xData.iloc[test_index])
-            y_train.append(yData.iloc[train_index])
-            y_test.append(yData.iloc[test_index])
-
-        for i in self._elite:
-            i = np.array(i)
-            colIx = np.where(i == 1)
-            print(colIx)
-            cvScore = 0
-            for j in range(5):
-                trainx = x_train[j][x_train[j].columns[colIx]]
-                trainy = y_train[j]
-                testx = x_test[j][x_test[j].columns[colIx]]
-                self._IMachineLearning.train(trainx,trainy)
-                prd = self._IMachineLearning.predict(testx)
-                cvScore += self.fitness(prd,y_test[j].tolist(),fitnessMethod)
-            cvScore = cvScore/5
-            fitnessList.append(cvScore)
-        print(fitnessList)
-        Ixd = self._elite[fitnessList.index(max(fitnessList))]
-        self._bestSelection = xData.columns[np.where(Ixd == 1)]
         return self._bestSelection
 
 class Dimension_Selection (IFeatureSelection):
@@ -404,9 +409,91 @@ class Dimension_Selection (IFeatureSelection):
         return super().FeatureSelection()
 
 class Bhattacharyya_Selection (IFeatureSelection):
-    def __init__(self, IMachineLearning):
+    def __init__(self,selectNum =20, IMachineLearning=None):
+        self._coefFrame = pd.DataFrame(columns=['distA','distB','coef'])
+        self._selectFeature = []
+        self._selectNum = selectNum
         return super().__init__(IMachineLearning)
 
-    def FeatureSelection(self):
-        return super().FeatureSelection()
+    def Bhattacharyya_coefficient(self,distA:ndarray, distB:ndarray):
+        
+        ## check input ##
+        if isinstance(distA,Series):
+            distA = np.array(distA.tolist())
+        if isinstance(distB,Series):
+            distB = np.array(distB.tolist())
+        if not isinstance(distA,ndarray) and not isinstance(distB,ndarray):
+            raise ValueError("Invalid Distributions")
+        if len(distA) != len(distB):
+            raise ValueError("distributions A and B should have same length")
+
+        ## Bhattacharyya coefficient ##
+        distA = self._standardize(distA)
+        distB = self._standardize(distB)
+
+        coef = 0
+        for i in range(len(distA)):
+            temp = math.sqrt(distA[i] * distB[i])
+            coef = coef + temp
+        return coef
+
+    def _standardize(self, dist: ndarray):
+
+        ## Check input ##
+        if isinstance(dist,Series):
+            dist = np.array(dist.tolist())
+        if not isinstance(dist,ndarray):
+            raise ValueError('Invalid distribution')
+        ## scale distribution ##
+        res = []
+        max = np.max(dist)
+        min = np.min(dist)
+        dif = max - min
+        dist = np.subtract(dist,min)
+        dist = np.divide(dist,dif)
+        dist = np.sort(dist)
+        return dist
+
+    def FeatureSelection (self, xData:pd.DataFrame):
+        """
+        Larger the coefficient, larger the overlap between two variables.
+        The selection process is to select the most divergent vairable pairs.
+        """
+        ## Check input ##
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError("Invalid xData")
+
+        ## Feature Selection ##
+        coefMx = self._coefMatrix(xData)
+        coefMx = coefMx.sort_values(["coef"])
+        index = 0
+        self._selectFeature = []
+        while len(self._selectFeature) < self._selectNum:
+            self._selectFeature.append(coefMx.iloc[index].distA)
+            self._selectFeature.append(coefMx.iloc[index].distB)
+            self._selectFeature = list(set(self._selectFeature))
+            index += 1
+        if len(self._selectFeature) > self._selectNum:
+            self._selectFeature.pop()
+
+        return self._selectFeature
+
+    def _coefMatrix (self, xData):
+        """
+        This function iterate through all xData and create a 
+        Bhattacharyya coefficient matrix.
+        """
+        ## check input ##
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError("Invalid input")
+
+        ## Extract matrix ##
+        cols = xData.columns
+        for i in range(len(cols)):
+            for j in range(len(cols)):
+                if i < j:
+                    coef = self.Bhattacharyya_coefficient(xData[cols[i]],xData[cols[j]])
+                    self._coefFrame=self._coefFrame.append({'distA':cols[i],'distB':cols[j],'coef':coef}, ignore_index = True)     
+        return self._coefFrame
+
 
