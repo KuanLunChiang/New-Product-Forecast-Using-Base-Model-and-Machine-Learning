@@ -52,7 +52,19 @@ class Test_SVM(unittest.TestCase):
         self.assertRaises(ValueError,svm.predict,np.random.randn(1,1))
 
     def test_SVM_score(self):
-        self.fail()
+        ## check input ##
+        failxData = "Invalid Data"
+        failyData = "Invalid Data"
+        svm = SVM_Model()
+        self.assertRaises(ValueError,svm.train,failxData,failyData)
+
+        ## Train SVM ##
+        xData = np.random.randn(500,10)
+        yData = np.random.randn(500)
+        svm.train(xData,yData)
+        testData = np.random.randn(50,10)
+        prd = svm.predict(testData)
+        svm.score(prd,testData)
 
 
 
@@ -89,6 +101,7 @@ class Test_GeneticAlgorithm(unittest.TestCase):
         print(res)
         for i in res:
             self.assertEqual(sum(i),30)
+
     def test_GA_selection(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
@@ -128,7 +141,7 @@ class Test_GeneticAlgorithm(unittest.TestCase):
         for i in nextG:
             self.assertEqual(sum(i),20)
             self.assertEqual(len(i),featureNum)
-        self.assertEqual(len(nextG),(len(sel)-1)*2)
+        self.assertEqual(len(nextG),(len(sel) - 1) * 2)
         print(nextG)
 
     def test_GA_breed(self):
@@ -148,7 +161,7 @@ class Test_GeneticAlgorithm(unittest.TestCase):
         self.assertEqual(len(childa),len(childb))
         print(childa,childb)
 
-    def test_GA_mutate (self):
+    def test_GA_mutate(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
         xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
@@ -177,10 +190,10 @@ class Test_GeneticAlgorithm(unittest.TestCase):
         self.assertEqual(sum(sw),sum(pa))
         self.assertEqual(len(sw),len(pa))
         for i in range(len(sw)):
-            if sw[i]==1:
+            if sw[i] == 1:
                 self.assertNotEqual(sw[i],pa[i])
 
-    def test_GA_FeatureSelection (self):
+    def test_GA_FeatureSelection(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
         xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
@@ -191,9 +204,9 @@ class Test_GeneticAlgorithm(unittest.TestCase):
         print(features)
 
 
-class Test_Bhattacharyya_Selection (unittest.TestCase):
+class Test_Bhattacharyya_Selection(unittest.TestCase):
     
-    def test_BC_BhattacharyyaCoef (self):
+    def test_BC_BhattacharyyaCoef(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
         xData = df
@@ -210,10 +223,12 @@ class Test_Bhattacharyya_Selection (unittest.TestCase):
 
 
 
-    def test_BC_standardDist (self):       
+    def test_BC_standardDist(self):       
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
-        #xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        #xData =
+        #df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis
+        #=1)
         xData = df
         bs = Bhattacharyya_Selection(None)
         
@@ -229,7 +244,7 @@ class Test_Bhattacharyya_Selection (unittest.TestCase):
         for i in res:
             self.assertGreaterEqual(i,0)
 
-    def test_BC_coefMX (self):
+    def test_BC_coefMX(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
         xData = df[['internalFactor','externalFactor']]
@@ -243,10 +258,10 @@ class Test_Bhattacharyya_Selection (unittest.TestCase):
         ## Extract coefficient matrix ##
         coefMx = bs._coefMatrix(xData)
         print(coefMx)
-        ans = (len(xData.columns)*len(xData.columns)-len(xData.columns))/2
+        ans = (len(xData.columns) * len(xData.columns) - len(xData.columns)) / 2
         self.assertEqual(len(coefMx),ans)
 
-    def test_BC_FeatureSelection (self):
+    def test_BC_FeatureSelection(self):
         ## Initialize ##
         df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
         xData = df
@@ -265,11 +280,131 @@ class Test_Bhattacharyya_Selection (unittest.TestCase):
 
 class Test_GaussianProcess(unittest.TestCase):
     def test_GP_train(self):
-        self.fail()
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        gp = Gaussian_Model(1e-10,'fmin_l_bfgs_b',True,None)
+
+        ## Check input ##
+        self.assertRaises(ValueError,gp.train,"Invalid input",2123)
+        self.assertRaises(ValueError,gp.train,{'a':2,'b':[1,2,3]},"Invalid")
+        self.assertRaises(ValueError,gp.train,123,{'a':2})
+
+        ## Train model ##
+        gp.train(xData,yData)
+
     def test_GP_predict(self):
-        self.fail()
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        gp = Gaussian_Model(1e-10,'fmin_l_bfgs_b',True,None)
+        gp.train(xData,yData)
+
+        ## Check input ##
+        self.assertRaises(ValueError,gp.predict,"Invalid")
+        self.assertRaises(ValueError,gp.predict,1)
+        self.assertRaises(ValueError,gp.predict,{'a':2})
+        ## Predict ##
+        gp.predict(xData)
+
     def test_GP_score(self):
-        self.fail()
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        gp = Gaussian_Model(1e-10,'fmin_l_bfgs_b',True,None)
+        gp.train(xData,yData)
+        prd = gp.predict(xData)
+        ## score ##
+        print(gp.score(prd,yData))
+
+class Test_Adaptive_KNN (unittest.TestCase):
+    def test_AdaptiveKNN_train(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        knn = Adaptive_KNN_Model()
+
+        ## Check input ##
+        self.assertRaises(ValueError,knn.train,"Invalid input",2123)
+        self.assertRaises(ValueError,knn.train,{'a':2,'b':[1,2,3]},"Invalid")
+        self.assertRaises(ValueError,knn.train,123,{'a':2})
+
+        ## Train model ##
+        knn.train(xData,yData)
+
+    def test_AdaptiveKNN_predict(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        knn = Adaptive_KNN_Model()
+        knn.train(xData,yData)
+
+        ## Check input ##
+        self.assertRaises(ValueError,knn.predict,"Invalid")
+        self.assertRaises(ValueError,knn.predict,1)
+        self.assertRaises(ValueError,knn.predict,{'a':2})
+        ## Predict ##
+        knn.predict(xData)
+
+    def test_AdaptiveKNN_score(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        knn = Adaptive_KNN_Model()
+        knn.train(xData,yData)
+        prd = knn.predict(xData)
+        ## score ##
+        print(prd)
+        print(knn.score(prd,yData))
+
+class Test_Forest(unittest.TestCase):
+    def test_Forest_train(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        rf = Forest_Model()
+
+        ## Check input ##
+        self.assertRaises(ValueError,rf.train,"Invalid input",2123)
+        self.assertRaises(ValueError,rf.train,{'a':2,'b':[1,2,3]},"Invalid")
+        self.assertRaises(ValueError,rf.train,123,{'a':2})
+
+        ## Train model ##
+        rf.train(xData,yData)            
+
+    def test_Forest_predict(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        rf = Forest_Model()
+        rf.train(xData,yData)
+
+        ## Check input ##
+        self.assertRaises(ValueError,rf.predict,"Invalid")
+        self.assertRaises(ValueError,rf.predict,1)
+        self.assertRaises(ValueError,rf.predict,{'a':2})
+        ## Predict ##
+        rf.predict(xData)
+
+    def test_Forest_score(self):
+        ## Initialize ##
+        df = pd.read_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\qpmSample.csv")
+        xData = df.drop(['MenuItemID','externalFactor','internalFactor','marketSize'],axis =1)
+        yData = df.externalFactor
+        rf = Forest_Model()
+        rf.train(xData,yData)
+        prd = rf.predict(xData)
+        ## score ##
+        print(prd)
+        print(rf.score(prd,yData))
 
 if __name__ == '__main__':
     unittest.main()

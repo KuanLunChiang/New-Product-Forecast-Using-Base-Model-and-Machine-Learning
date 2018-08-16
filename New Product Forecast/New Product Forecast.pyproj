@@ -28,6 +28,9 @@
     <Compile Include="GreyBass\MachineLearning.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GreyBass\ModelSelection.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GreyBass\__init__.py">
       <SubType>Code</SubType>
     </Compile>

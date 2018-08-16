@@ -24,21 +24,24 @@ class IMachineLearning(object):
 
     def train(self):
         raise NotImplementedError()
+
     def predict(self):
         raise NotImplementedError()
+
     def score(self,prd, real):
         ## Check input ##
         if isinstance(prd,Series):
-            prd = prd.tolist()
+            prd = np.array(prd.tolist())
         if isinstance(real,Series):
-            real = real.tolist()
-        if isinstance(prd,ndarray):
+            real = np.array(real.tolist())
+        if not isinstance(prd,ndarray):
             raise ValueError("Invalid prediction data")
-        if isintance(real,ndarray):
+        if not isinstance(real,ndarray):
             raise ValueError("Invalid real data")
+
         ## Compute Score ##
         score = 0
-        if regression:
+        if self._regression:
             for i in range(len(prd)):
                 score += np.square(prd[i]-real[i])
             score = np.sqrt(score/len(prd))
@@ -129,6 +132,9 @@ class Bass_prd (BassInformation,IMachineLearning):
 
 from sklearn.svm import SVR, SVC
 class SVM_Model (IMachineLearning):
+    """
+    This class implment SVM regression and classification from Sklearn.
+    """
 
     def __init__(self,regression = True,kernel = 'rbf',gamma ='auto', degree =3, C = 1):
         self._regression = regression
@@ -157,25 +163,162 @@ class SVM_Model (IMachineLearning):
         if isinstance(xData,str):
             raise ValueError('Invalid Argument')
         if isinstance(xData,Series):
-            xData = xData.tolist()
+            xData = np.array(xData.tolist())
         ## predict ##
         self._prd = self._model.predict(xData)
         return self._prd
 
 
-from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process import GaussianProcessRegressor, GaussianProcessClassifier
 class Gaussian_Model (IMachineLearning):
-    def __init__(self, *args, **kwargs):
+    """
+    This class implment Gaussian process regression and classification from Sklearn.
+    """
+    def __init__(self,alpha, optimizer= 'fmin_l_bfgs_b', regression = True, kernel = None, n_jobs = 4):
+        self._regression = regression
+        self._kernel = kernel
+        self.alpha = alpha
+        self._optimizer = optimizer
+        self.njob = n_jobs
+        if regression:
+            self._model = GaussianProcessRegressor(kernel=kernel,alpha=alpha,optimizer=optimizer)
+        else:
+            self._model = GaussianProcessClassifier(kernel=kernel,alpha=alpha,optimizer=optmizer,n_jobs=n_jobs)
+        return super().__init__()
 
-        return super().__init__(*args, **kwargs)
+    def train(self,xData, yData):
+        ## check input ##
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError('Invalid xData')
 
-class Deep_Learning_Model (IMachineLearning):
-    def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
+        if not isinstance(yData,pd.DataFrame) and not isinstance(yData,Series):
+            raise ValueError('Invalid yData')
+        ## train SVM ##
+        self._xData = xData
+        self._yData = yData
+        self._model = self._model.fit(self._xData,self._yData)
 
+    def predict(self,xData):
+        ## check input ##
+        if isinstance(xData,str):
+            raise ValueError('Invalid Argument')
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError("Invalid Argument")
+        ## predict ##
+        self._prd = self._model.predict(xData)
+        return self._prd
+
+from sklearn.neighbors import RadiusNeighborsRegressor, RadiusNeighborsClassifier
+class Adaptive_KNN_Model (IMachineLearning):
+    """
+    This class performs Adaptive K-Nearest-Neighbor
+    """
+    def __init__(self,regression = True, radius = 1.0,weights = 'distance',algorithm = 'auto',leaf_size = 30, p =2,metric = 'minkowski',outlier_label= None,metric_params = None):
+        self._regression = regression
+        self._radius = radius
+        self._weights = weights
+        self._algorithm = algorithm
+        self._leaf_size = leaf_size
+        self._p = p
+        self._metric = metric
+        self._metric_params =metric_params
+        self._outlier_label = outlier_label
+        if regression:
+            self._model = RadiusNeighborsRegressor(radius,weights,algorithm,leaf_size,p,metric,metric_params)
+        else:
+            self._model = RadiusNeighborsClassifier(radius,weights,algorithm,leaf_size,p,metric,metric_params)
+        return super().__init__()
+
+    def train(self,xData,yData):
+        ## check input ##
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError('Invalid xData')
+
+        if not isinstance(yData,pd.DataFrame) and not isinstance(yData,Series):
+            raise ValueError('Invalid yData')
+        ## train SVM ##
+        self._xData = xData
+        self._yData = yData
+        self._model = self._model.fit(self._xData,self._yData)
+
+    def predict(self,xData):
+        ## check input ##
+        if isinstance(xData,str):
+            raise ValueError('Invalid Argument')
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError("Invalid Argument")
+        ## predict ##
+        self._prd = self._model.predict(xData)
+        return self._prd
+
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 class Forest_Model (IMachineLearning):
-    def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
+    def __init__(self, regression =True ,n_estimators=10, criterion='gini', 
+                 max_depth=None, min_samples_split=2, min_samples_leaf=1, 
+                 min_weight_fraction_leaf=0.0, max_features='auto', 
+                 max_leaf_nodes=None, min_impurity_decrease=0.0, 
+                 min_impurity_split=None, bootstrap=True, 
+                 oob_score=False, n_jobs=1, random_state=None, verbose=0, 
+                 warm_start=False, class_weight=None):
+
+        self._regression = regression
+        self._n_estimators = n_estimators
+        self._criterion = criterion
+        self._max_depth = max_depth
+        self._min_samples_split = min_samples_split
+        self._min_samples_leaf = min_samples_leaf
+        self._min_weight_fraction_leaf = min_weight_fraction_leaf
+        self._max_features =max_features
+        self._max_leaf_nodes =max_leaf_nodes
+        self._min_impurity_decrease =min_impurity_decrease
+        self._min_impurity_split =min_impurity_split
+        self._bootstrap =bootstrap
+        self._oob_score =oob_score
+        self._n_jobs =n_jobs
+        self._random_state =random_state
+        self._verbose =verbose
+        self._warm_start = warm_start
+        self._class_weight =class_weight
+
+        if regression:
+            self._model = RandomForestRegressor(n_estimators=10, criterion='mse', 
+                 max_depth=None, min_samples_split=2, min_samples_leaf=1, 
+                 min_weight_fraction_leaf=0.0, max_features='auto', 
+                 max_leaf_nodes=None, min_impurity_decrease=0.0, 
+                 min_impurity_split=None, bootstrap=True, 
+                 oob_score=False, n_jobs=1, random_state=None, verbose=0, 
+                 warm_start=False)
+        else:
+            self._model = RandomForestClassifier(n_estimators=10, criterion='gini', 
+                 max_depth=None, min_samples_split=2, min_samples_leaf=1, 
+                 min_weight_fraction_leaf=0.0, max_features='auto', 
+                 max_leaf_nodes=None, min_impurity_decrease=0.0, 
+                 min_impurity_split=None, bootstrap=True, 
+                 oob_score=False, n_jobs=1, random_state=None, verbose=0, 
+                 warm_start=False, class_weight=None)
+        return super().__init__()
+
+    def train(self,xData,yData):
+        ## check input ##
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError('Invalid xData')
+
+        if not isinstance(yData,pd.DataFrame) and not isinstance(yData,Series):
+            raise ValueError('Invalid yData')
+        ## train SVM ##
+        self._xData = xData
+        self._yData = yData
+        self._model = self._model.fit(self._xData,self._yData)
+
+    def predict(self,xData):
+        ## check input ##
+        if isinstance(xData,str):
+            raise ValueError('Invalid Argument')
+        if not isinstance(xData,pd.DataFrame):
+            raise ValueError("Invalid Argument")
+        ## predict ##
+        self._prd = self._model.predict(xData)
+        return self._prd
 
 class Genetic_Selection (IFeatureSelection):
     """
@@ -296,9 +439,8 @@ class Genetic_Selection (IFeatureSelection):
             self._bestSelection['fitness'] = max(fitnessList)
             colIx = np.where(population[fitnessList.index(max(fitnessList))]==1)
             self._bestSelection['selection'] = xData[xData.columns[colIx]].columns
-
-        ## store elite list which goes to next generation directly ##
-        self._elite.append(population[fitnessList.index(max(fitnessList))])
+            ## store elite list which goes to next generation directly ##
+            self._elite.append(population[fitnessList.index(max(fitnessList))])
 
         ## return current generation selection and used for crossover ##
         pop = np.arange(0,len(population))
@@ -395,18 +537,12 @@ class Genetic_Selection (IFeatureSelection):
         ## Genetic Algorithm ##
         population = self._generatePopulation(len(xData.columns))
         for i in range(iter):
+            print(round(i/iter*100,2),"%")
             parents = self.selection(xData,yData,population,self._selectedNum)
             if i < iter:
                 nextGen = self.crossover(parents)
                 population = self.mutation(nextGen)
         return self._bestSelection
-
-class Dimension_Selection (IFeatureSelection):
-    def __init__(self, *args, **kwargs):
-        return super().__init__(*args, **kwargs)
-
-    def FeatureSelection(self):
-        return super().FeatureSelection()
 
 class Bhattacharyya_Selection (IFeatureSelection):
     def __init__(self,selectNum =20, IMachineLearning=None):
