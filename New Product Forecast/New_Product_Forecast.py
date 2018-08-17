@@ -62,34 +62,86 @@ def pqm_df (xData):
 trainData = pqm_df(trainData)
 
 ################### Train Bass Index External ###################################################
-yExtData = trainData.externalFactor
-xExtData = trainData.drop(['revenue','marketSize','externalFactor','internalFactor','MenuItemID','Price'],axis = 1)
+xData = trainData
+xData = xData.loc[:,xData.max()>0]
+xData = xData.loc[xData.sum(axis = 1) != 0,:]
+yExtData = xData.externalFactor
+yIntData = xData.internalFactor
+yMarketData = xData.marketSize
+xData = xData.drop(['revenue','marketSize','externalFactor','internalFactor','MenuItemID','Price'],axis = 1)
 
 #################### Feature Selection #########################################################
 """
 Filter quarter of the features using Bhattacharyya coefficient
 and find the most divergent features
 """
-selectFeatureNum = int(len(xExtData.columns)/4)
+selectFeatureNum = int(len(xData.columns)/2)
 bs = Bhattacharyya_Selection(selectFeatureNum)
-BFeature = bs.FeatureSelection(xExtData)
+BFeature = bs.FeatureSelection(xData)
 pd.DataFrame({'Bfeature':BFeature}).to_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\BFeature.csv")
 
 """
+Normalize Data for all the distance model
 Using Genetic Algorithm and different Machine Learning Models to find the
 most valuable 10 features.
 """
 
+xData = xData[BFeature]
+xData = xData.loc[xData.sum(axis = 1) != 0,:]
+
 svm = SVM_Model(regression=True,kernel = 'rbf',gamma = 'auto',C=1)
 gp = Gaussian_Model(1e-10)
+rf = Forest_Model(n_estimators=20)
+knn = Adaptive_KNN_Model(radius= 10)
 
 def GA_Selection (model,xData,yData,pop,iter):
     ga = Genetic_Selection(model,10,pop,0.3)
     GAFeatures = ga.FeatureSelection(xData,yData,'rmse',iter)
     return GAFeatures
 
-svm_ext_features = GA_Selection(svm,xExtData[BFeature],yExtData,100,1000)
+import pickle
 
+'''
+SVM
+'''
+print("Start SVM")
+svm_ext_features = GA_Selection(svm,xData,yExtData,500,1000)
+svm_int_features = GA_Selection(svm,xData,yIntData,500,1000)
+svm_mrk_features = GA_Selection(svm,xData,yMarketData,500,1000)
+print(svm_ext_features)
+print(svm_int_features)
+print(svm_mrk_features)
+
+
+'''
+Adaptive KNN
+'''
+print("Start KNN")
+knn_ext_features = GA_Selection(knn,xData,yExtData,500,1000)
+knn_int_features = GA_Selection(knn,xData,yIntData,500,1000)
+knn_mrk_features = GA_Selection(knn,xData,yMarketData,500,1000)
+print(knn_ext_features)
+print(knn_int_features)
+print(knn_mrk_features)
+
+
+'''
+Gaussian Process
+'''
+print("Start Gaussian")
+gp_ext_features = GA_Selection(gp,xData,yExtData,200,1000)
+gp_int_features = GA_Selection(gp,xData,yIntData,200,1000)
+gp_mrk_features = GA_Selection(gp,xData,yMarketData,200,1000)
+print(gp_ext_features)
+print(gp_int_features)
+print(gp_mrk_features)
+'''
+Random Forest
+'''
+print("Start Random Forest")
+rf_ext_features = GA_Selection(rf,xData,yExtData,200,1000)
+rf_int_features = GA_Selection(rf,xData,yIntData,200,1000)
+rf_mrk_features = GA_Selection(rf,xData,yMarketData,200,1000)
 
 ####################### Train Bass Index Model ################################################
 """
