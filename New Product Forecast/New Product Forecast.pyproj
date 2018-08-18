@@ -42,9 +42,12 @@
   <ItemGroup>
     <Folder Include="GreyBass\" />
     <Folder Include="Data\" />
+    <Folder Include="TuneModel\" />
+    <Folder Include="TuneModel\NLS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\qpmSample.csv" />
+    <Content Include="Data\svm_ext_features.npy" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

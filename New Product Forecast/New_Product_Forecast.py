@@ -66,10 +66,12 @@ trainData = pqm_df(trainData)
 xData = trainData
 xData = xData.loc[:,xData.max()>0]
 xData = xData.loc[xData.sum(axis = 1) != 0,:]
+xData = xData.loc[xData.marketSize < xData.marketSize.std()*3,:]
 yExtData = xData.externalFactor
 yIntData = xData.internalFactor
 yMarketData = xData.marketSize
 xData = xData.drop(['revenue','marketSize','externalFactor','internalFactor','MenuItemID','Price'],axis = 1)
+
 
 #################### Feature Selection #########################################################
 """
@@ -95,9 +97,9 @@ gp = Gaussian_Model(1e-10,n_jobs=-1)
 rf = Forest_Model(n_estimators=20,n_jobs=-1)
 knn = Adaptive_KNN_Model(radius= 10)
 
-def GA_Selection (model,xData,yData,pop,iter):
+def GA_Selection (model,xData,yData,pop,iter,method = 'rmse'):
     ga = Genetic_Selection(model,10,pop,0.3)
-    GAFeatures = ga.FeatureSelection(xData,yData,'rmse',iter)
+    GAFeatures = ga.FeatureSelection(xData,yData,method,iter)
     return GAFeatures
 
 
@@ -210,6 +212,10 @@ def gridSearch(xData,yData,selectList,mdl,paraList,para):
             res = mdl
     return gridList,res
 
+
+def tune_model_save(file,paraList):
+    np.save(file,paraList)
+
 """
 NLS Model
 """
@@ -219,35 +225,99 @@ SVM
 '''
 svm = SVM_Model()
 svm_ext_c,svm_ext_tune = gridSearch(xData,yExtData,svm_ext_features,svm,np.arange(0.000001,0.0001,0.000001),'C')
-svm_ext_g,svm_ext_tune = gridSearch(xData,yExtData,svm_ext_features,svm,np.arange(0.00001,0.0001,0.00001),'gamma')
+svm_ext_g,svm_ext_tune = gridSearch(xData,yExtData,svm_ext_features,svm_ext_tune,np.arange(0.00001,0.0001,0.00001),'gamma')
 
-svm_int_c,svm_int_tune = gridSearch(xData,yIntData,svm_int_features,svm,np.arange(0.00001,1,0.00001),'C')
-svm_int_g,svm_int_tune = gridSearch(xData,yIntData,svm_int_features,svm,np.arange(0.00001,1,0.00001),'gamma')
+svm_int_c,svm_int_tune = gridSearch(xData,yIntData,svm_int_features,svm,np.arange(0.000001,0.00001,0.00001),'C')
+svm_int_g,svm_int_tune = gridSearch(xData,yIntData,svm_int_features,svm_int_tune,np.arange(0.01,0.1,0.00001),'gamma')
 
-svm_mrk_c,svm_mrk_tune = gridSearch(xData,yMarketData,svm_mrk_features,svm,np.arange(0.0001,1,0.0001),'C')
-svm_mrk_g,svm_mrk_tune = gridSearch(xData,yMarketData,svm_mrk_features,svm,np.arange(0.00001,0.0001,0.00001),'gamma')
+svm_mrk_c,svm_mrk_tune = gridSearch(xData,yMarketData,svm_mrk_features,svm,np.arange(0.00001,0.0001,0.00001),'C')
+svm_mrk_g,svm_mrk_tune = gridSearch(xData,yMarketData,svm_mrk_features,svm_mrk_tune,np.arange(0.00001,0.0001,0.00001),'gamma')
 
-print(svm_ext_c,'\n',svm_ext_g)
-print(svm_int_c,'\n',svm_int_g)
-print(svm_mrk_c,'\n',svm_mrk_g)
+print(svm_ext_g)
+print(svm_int_g)
+print(svm_mrk_g)
+
+
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_ext_c',svm_ext_c)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_ext_g',svm_ext_g)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_int_c',svm_int_c)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_int_c',svm_int_g)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_mrk_c',svm_mrk_c)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\svm_mrk_c',svm_mrk_g)
+
+
+
 
 '''
 Adaptive KNN
 '''
 
 knn = Adaptive_KNN_Model(True)
-knn_ext_r,knn_ext_tune = gridSearch(xData,yExtData,knn_ext_features,knn,np.arange(10,100,1),'radius')
-knn_int_r,knn_int_tune = gridSearch(xData,yIntData,knn_int_features,knn,np.arange(10,100,1),'radius')
-knn_mrk_r,knn_mrk_tune = gridSearch(xData,yMarketData,knn_mrk_features,knn,np.arange(10,100,1),'radius')
+knn_ext_r,knn_ext_tune = gridSearch(xData,yExtData,knn_ext_features,knn,np.arange(4,5,0.0001),'radius')
+knn_int_r,knn_int_tune = gridSearch(xData,yIntData,knn_int_features,knn,np.arange(4,5,0.0001),'radius')
+knn_mrk_r,knn_mrk_tune = gridSearch(xData,yMarketData,knn_mrk_features,knn,np.arange(8,9,0.0001),'radius')
 
 print(knn_ext_r)
 print(knn_int_r)
 print(knn_mrk_r)
 
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\knn_ext_r',knn_ext_r)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\knn_int_r',knn_int_r)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\knn_mrk_r',knn_mrk_r)
+
 '''
 Gaussian Process
 '''
+from sklearn.gaussian_process.kernels import Matern
 
+
+gp = Gaussian_Model(alpha=1e-10,n_jobs=-1)
+
+gp_ext_alpha,gp_ext_tune = gridSearch(xData,yExtData,gp_ext_features,gp,np.arange(1e-13,1e-12,1e-14),'alpha')
+gp_int_alpha,gp_int_tune = gridSearch(xData,yIntData,gp_ext_features,gp,np.arange(9e-13,1e-12,1e-14),'alpha')
+gp_mrk_alpha,gp_mrk_tune = gridSearch(xData,yMarketData,gp_ext_features,gp,np.arange(1e-12,1e-11,1e-13),'alpha')
+
+print(gp_ext_alpha)
+print(gp_int_alpha)
+print(gp_mrk_alpha)
+
+
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\gp_ext_alpha',gp_ext_alpha)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\gp_int_alpha',gp_int_alpha)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\gp_mrk_alpha',gp_mrk_alpha)
+
+'''
+Random Forest
+'''
+
+rf = Forest_Model(True,50,'mse',10,2,n_jobs = -1)
+rf_ext_depth,rf_ext_tune = gridSearch(xData,yExtData,rf_ext_features,rf,np.arange(1,len(xData.columns),1),'max_depth')
+rf_int_depth,rf_int_tune = gridSearch(xData,yIntData,rf_ext_features,rf,np.arange(1,len(xData.columns),1),'max_depth')
+rf_mrk_depth,rf_mrk_tune = gridSearch(xData,yMarketData,rf_ext_features,rf,np.arange(1,len(xData.columns),1),'max_depth')
+
+print(rf_ext_depth)
+print(rf_int_depth)
+print(rf_mrk_depth)
+
+
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\rf_ext_depth',rf_ext_depth)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\rf_int_depth',rf_int_depth)
+tune_model_save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\TuneModel\NLS\rf_mrk_depth',rf_mrk_depth)
+
+'''
+performance evaluation
+'''
+extList = [svm_ext_g['cvScore'],knn_ext_r['cvScore'],gp_ext_alpha['cvScore'],rf_ext_depth['cvScore']]
+intList = [svm_int_g['cvScore'],knn_int_r['cvScore'],gp_int_alpha['cvScore'],rf_int_depth['cvScore']]
+mrkList = [svm_mrk_g['cvScore'],knn_mrk_r['cvScore'],gp_mrk_alpha['cvScore'],rf_mrk_depth['cvScore']]
+extFrame = pd.DataFrame({'ext':extList,'int':intList,'mrk':mrkList},index = ['SVM','Adaptive KNN','Gaussian Process','Random Forest'])
+extFrame.ext.plot('bar')
+extFrame.int.plot('bar')
+extFrame.mrk.plot('bar')
+
+'''
+Ensemble
+'''
 
 
 
@@ -256,3 +326,45 @@ Gaussian Process
 This section will train the competitive index model 
 using NLS coefficients and ingredients
 """
+
+'''
+Setup competitive index
+'''
+xData = trainData
+xData = xData.loc[:,xData.max()>0]
+xData = xData.loc[xData.sum(axis = 1) != 0,:]
+xData = xData.loc[xData.marketSize < xData.marketSize.std()*3,:]
+xData = pd.DataFrame(xData.groupby(['MenuItemID','externalFactor','internalFactor','marketSize']).sum().to_records())
+xData['compInd'] = pd.qcut(salesData.revenue,3,labels=['low competitive','moderate','high competitive'])
+yData = xData.compInd
+xData = xData.drop(['compInd','MenuItemID','Price','revenue'],axis = 1)
+
+
+'''
+Feature Selection
+'''
+selectFeatureNum = int(len(xData.columns)/2)
+bs = Bhattacharyya_Selection(selectFeatureNum)
+BFeature_CInd = bs.FeatureSelection(xData)
+BFeature_CInd += ['externalFactor','internalFactor','marketSize']
+pd.DataFrame({'Bfeature':BFeature_CInd}).to_csv(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\BFeature_CInd.csv")
+
+svm = SVM_Model(regression=False,kernel = 'rbf',gamma = 'auto',C=1)
+gp = Gaussian_Model(1e-10,optimizer = 'fmin_l_bfgs_b',n_jobs=-1,regression =False)
+rf = Forest_Model(n_estimators=20,n_jobs=-1,regression =False)
+knn = Adaptive_KNN_Model(radius= 100,regression =False)
+
+xData = xData[BFeature_CInd]
+xData.marketSize = (xData.marketSize - xData.marketSize.mean())/xData.marketSize.std()
+xData.internalFactor = (xData.internalFactor - xData.internalFactor.mean())/xData.internalFactor.std()
+xData.externalFactor = (xData.externalFactor - xData.externalFactor.mean())/xData.externalFactor.std()
+
+svm_comp_features = GA_Selection(svm,xData,yData,500,1000,'classificationError')
+knn_comp_features = GA_Selection(knn,xData,yData,500,1000,'classificationError')
+gp_comp_features = GA_Selection(gp,xData,yData,500,1000,'classificationError')
+rf_comp_features = GA_Selection(rf,xData,yData,500,1000,'classificationError')
+
+np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\svm_comp_features.npy',svm_comp_features)
+np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_comp_features.npy',knn_comp_features)
+np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_comp_features.npy',gp_comp_features)
+np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\rf_comp_features.npy',rf_comp_features)

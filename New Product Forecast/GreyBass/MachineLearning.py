@@ -183,7 +183,7 @@ class Gaussian_Model (IMachineLearning):
         if regression:
             self._model = GaussianProcessRegressor(kernel=kernel,alpha=alpha,optimizer=optimizer)
         else:
-            self._model = GaussianProcessClassifier(kernel=kernel,alpha=alpha,optimizer=optmizer,n_jobs=n_jobs)
+            self._model = GaussianProcessClassifier(kernel=kernel,optimizer=optimizer,n_jobs=n_jobs)
         return super().__init__()
 
     def train(self,xData, yData):
@@ -538,7 +538,7 @@ class Genetic_Selection (IFeatureSelection):
         population = self._generatePopulation(len(xData.columns))
         for i in range(iter):
             print(round(i/iter*100,2),"%")
-            parents = self.selection(xData,yData,population,self._selectedNum)
+            parents = self.selection(xData,yData,population,self._selectedNum,fitnessMethod)
             if i < iter:
                 nextGen = self.crossover(parents)
                 population = self.mutation(nextGen)
