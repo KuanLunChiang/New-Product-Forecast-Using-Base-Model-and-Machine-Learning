@@ -64,6 +64,7 @@ trainData = pqm_df(trainData)
 
 ################### Train Bass Index External ###################################################
 xData = trainData
+xData = pd.DataFrame(xData.groupby(['MenuItemID','externalFactor','internalFactor','marketSize']).sum().to_records())
 xData = xData.loc[:,xData.max()>0]
 xData = xData.loc[xData.sum(axis = 1) != 0,:]
 xData = xData.loc[xData.marketSize < xData.marketSize.std()*3,:]
@@ -95,7 +96,7 @@ xData = xData.loc[xData.sum(axis = 1) != 0,:]
 svm = SVM_Model(regression=True,kernel = 'rbf',gamma = 'auto',C=1)
 gp = Gaussian_Model(1e-10,n_jobs=-1)
 rf = Forest_Model(n_estimators=20,n_jobs=-1)
-knn = Adaptive_KNN_Model(radius= 10)
+knn = Adaptive_KNN_Model(radius= 100)
 
 def GA_Selection (model,xData,yData,pop,iter,method = 'rmse'):
     ga = Genetic_Selection(model,10,pop,0.3)
@@ -115,7 +116,7 @@ print(svm_int_features)
 print(svm_mrk_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\svm_ext_features.npy",svm_ext_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\svm_int_features.npy",svm_int_features)
-np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\svm_mrk_features.npy",svm_mrk_features_features)
+np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\svm_mrk_features.npy",svm_mrk_features)
 
 '''
 Adaptive KNN
@@ -129,7 +130,7 @@ print(knn_int_features)
 print(knn_mrk_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_ext_features.npy",knn_ext_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_int_features.npy",knn_int_features)
-np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_mrk_features.npy",knn_mrk_features_features)
+np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_mrk_features.npy",knn_mrk_features)
 
 
 '''
@@ -144,7 +145,7 @@ print(gp_int_features)
 print(gp_mrk_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_ext_features.npy",gp_ext_features)
 np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_int_features.npy",gp_int_features)
-np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_mrk_features.npy",gp_mrk_features_features)
+np.save(r"C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_mrk_features.npy",gp_mrk_features)
 
 '''
 Random Forest
@@ -368,3 +369,5 @@ np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Disserta
 np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\knn_comp_features.npy',knn_comp_features)
 np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\gp_comp_features.npy',gp_comp_features)
 np.save(r'C:\Users\USER\Documents\Imperial College London\Summer Module\Dissertation\New Product Forecast\New Product Forecast\Data\rf_comp_features.npy',rf_comp_features)
+
+print(svm_comp_features,'\n',knn_comp_features,'\n',gp_comp_features,'\n',rf_comp_features)
